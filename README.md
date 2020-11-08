@@ -34,3 +34,5 @@
 
 # Important Details
 - Have to set timezone for Our Sri Lanka 
+- Checkout Condition Room View table
+- Owner and Receptionist UI component are differents
