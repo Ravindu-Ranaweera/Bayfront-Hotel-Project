@@ -76,9 +76,11 @@
                                             <div class="animate-form">
                                                 <select name="coach" class="inputFieldCoach" required>
                                                     <option value="">-Select Coach -</option>
-                                                    <option value="Hello">Hello</option>
-                                                    <option value="Hello1">Hello1</option>
-                                                    <option value="Hello2">Hello2</option>     
+                                                    <option value="coach_001">Coach 001</option>
+                                                    <option value="coach_002">Coach 002</option>
+                                                    <option value="coach_003">Coach 003</option>     
+                                                    <option value="coach_004">Coach 004</option>     
+                                                    <option value="coach_005">Coach 005</option>     
                                                 </select>    
                                             </div>     
                                         </td>
