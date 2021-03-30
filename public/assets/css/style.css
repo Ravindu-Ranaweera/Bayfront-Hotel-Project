@@ -115,7 +115,7 @@ ul.inline li:after {
 }
 dl.inline dd {
   display: inline;
-  margin-left: 50%;
+  margin-left: 57%;
 }
 
 dl.inline dd:after {
@@ -123,7 +123,7 @@ dl.inline dd:after {
   content: " ";
   clear: left;
   border-bottom: 2px dashed #ccc;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 dl.inline dt {
@@ -326,7 +326,7 @@ dl.inline dt {
   }
   dl.inline dd {
     display: inline;
-    margin-left: 50%;
+    margin-left: 55%;
   }
 
   dl.inline dd:after {
@@ -499,6 +499,7 @@ dl.inline dt {
   font-family: "Josefin Sans", sans-serif;
   font-weight: bold;
   color: #5a5a5a;
+  margin-top: 20px;
   padding: 5px;
   letter-spacing: 1px;
   text-align: left;

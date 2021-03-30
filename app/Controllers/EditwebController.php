@@ -89,9 +89,6 @@ class EditwebController{
                 view::load('dashboard/editweb/discount', $data);
             }
             // var_dump($data['type']); exit;
-                    
-            
-
         }
            
     }
@@ -388,15 +385,9 @@ class EditwebController{
 
 
     public function update() {
-        if(!isset($_SESSION['user_id'])) {
-            view::load('dashboard/dashboard');    
-        }
-        else {
-
-            if(isset($_POST['submit'])) {
+        
+        if(isset($_POST['submit'])) {
                 $errors = array();
-            
-            //$errors = $this->validation();
 
                 $room_number= $_POST['room_number'];
                 $room_name = $_POST['room_name'];
@@ -462,7 +453,7 @@ class EditwebController{
             }
         }    
 
-    }
+    
 
     public function delete($room_id , $room_number)
     {

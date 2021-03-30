@@ -25,7 +25,7 @@ class Customer extends Connection {
 
         $users = mysqli_query($this->connection, $query);
         if($users) {
-           mysqli_fetch_all($users,MYSQLI_ASSOC);
+            $users =mysqli_fetch_all($users,MYSQLI_ASSOC);
 
         }
         else {

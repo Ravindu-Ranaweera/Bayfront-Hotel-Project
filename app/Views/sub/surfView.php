@@ -50,16 +50,10 @@
                 <img src="<?php echo BURL.'assets/img/surf/sub1.jpg' ?>" alt="" class="packImg">
                 <div class="packageInfo">
                     <dl class="inline">
-                        <p class="head">We offer experienced professional instructors in small groups which allows for
-                            fast learning and lots of fun. Our lessons begin on the beach and in the easier white waves
+                        <p class="head"> Our lessons begin on the beach and in the easier white waves
                             where we take you through the basic theory and techniques of surfing..</p>
 
-                            <?php 
-                            $package_id = 2;
-                            ; ?>
-                            <div class="bttn">		
-								<a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-							</div>
+
                         <dt>TOUR INCLUDES:</dt>
                         <dd>Camp, Board, Shoes</dd>
                         <dt>DAILY TIMES:</dt>
@@ -69,7 +63,13 @@
                         <dt>PRICES:</dt>
                         <dd>1 Lesson - 100USD</dd>
                     </dl>
-                    <a class="btn" href="">BOOK NOW <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                    <?php 
+                            $package_id = 2;
+                            ; ?>
+                    <div class="bttn">
+                        <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
+                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                    </div>
                 </div>
 
             </div>
@@ -99,9 +99,7 @@
                 <div class="packageInfo">
                     <dl class="inline">
                         <p class="head">Three to six people in the group but need to be booked as a with minimum 3
-                            people. Unou Other guests may join this lesson. Too book a private group lesson and
-                            guarantee other students won't join the particular lesson we will charge the duo rates.
-                            Price per person.</p>
+                            people. Unou Other guests may join this lesson.</p>
                         <dt>TOUR INCLUDES:</dt>
                         <dd>Camp, Board, Shoes</dd>
                         <dt>DAILY TIMES:</dt>
@@ -111,7 +109,13 @@
                         <dt>PRICES:</dt>
                         <dd>1 Lesson - 50USD</dd>
                     </dl>
-                    <a class="btn" href="">BOOK NOW <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                    <?php 
+                            $package_id = 3;
+                            ; ?>
+                    <div class="bttn">
+                        <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
+                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                    </div>
                 </div>
 
             </div>
