@@ -137,13 +137,13 @@
                             <div class="rowdata1">
                                 <label for="#">Payment Selection</label>
                                 <?php if($paidAmount != 0){ ?>
-                                    <select name="payment_way" class="inputrow">
-                                         <option value="ONLINEPAY">-Select Payment PART-</option>     
+                                    <select name="payment_way" class="inputrow" required>
+                                         <option value="">-Select Payment PART-</option>     
                                          <option value="ONLINEFULL" style="border: none">FULL PAYMENT</option>      
                                     </select>
                                 <?php }else{ ?>
-                                    <select name="payment_way" class="inputrow">
-                                         <option value="ONLINEPAY">-Select Payment PART-</option>
+                                    <select name="payment_way" class="inputrow" required>
+                                         <option value="">-Select Payment PART-</option>
                                          <option value="ONLINEHALF" style="border: none">HALF PAYMENT</option>      
                                          <option value="ONLINEFULL" style="border: none">FULL PAYMENT</option>      
                                     </select>

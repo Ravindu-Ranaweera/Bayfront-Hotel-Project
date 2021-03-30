@@ -545,7 +545,9 @@ class RoomController {
                 $imageRoom =$db->view($room_number);
 
                 $db = new Customer();
-            $data['customer_details'] = $db->getAllCustomer();
+               $data['customer_details'] = $db->getAllCustomer();
+               $db = new RoomEdit();
+                $data['discount_details'] = $db->getAllDiscount();
                 // var_dump($imageRoom);
                 $data['input_data'] = $inputdata;
                 $data['img_details'] = $imageRoom;
@@ -565,6 +567,8 @@ class RoomController {
             $data['review_details'] = $db->getReservationId($room[0]['room_id']);
             $db = new Customer();
             $data['customer_details'] = $db->getAllCustomer();
+            $db = new RoomEdit();
+                $data['discount_details'] = $db->getAllDiscount();
 
                 $db = new Image();
                 $imageRoom =$db->view($room_number);
@@ -668,7 +672,7 @@ class RoomController {
             
         }
         else {
-            $datails['msg'] = "No Rooms Available";
+            $datails['msg3'] = "No Rooms Available";
             // echo "No Rooms Available";
         }
         return $datails;
@@ -1281,7 +1285,7 @@ class RoomController {
                 if(empty($uniqueResult)) {
                     // echo "tharindu";
                     // die();
-                    $data['msg2']= "No Result Found";
+                    $data['msg3']= "No Result Found";
                     $db = new RoomDetails();
                     $data['room_details'] = $db->getRoomView(); 
         

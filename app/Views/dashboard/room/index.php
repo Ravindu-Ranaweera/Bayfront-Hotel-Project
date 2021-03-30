@@ -16,11 +16,6 @@
             include(VIEWS.'dashboard/inc/navbar.php'); //Navbar
     ?>
 
-    <?php 
-        if(isset($errors)) {
-            echo '<script>alert("No Rooms Available Sorry!!")</script>';
-        }
-    ?>
     
     <!-- Table design -->
     <div class="content">
@@ -33,6 +28,18 @@
                         <span>
                             <a href="<?php url("room/selectOption"); ?>" class="addnew"><i class="material-icons">reply_all</i></a>  
                        </span>
+                       <?php 
+                        if(isset($errors)) { ?>
+                        <!-- //     echo '<script>alert("'.$errors['date'].'!!")</script>'; -->
+                        <div class="notifyclass">
+                            <span class="notifyError">
+                                <h3 class="error-style">
+                                    <?php echo "No Rooms Available For Days"; ?>
+                                </h3>
+                            </span>
+                        </div> 
+                            
+                        <?php } ?>
                         </h4>  
                     </div>
 
@@ -80,6 +87,7 @@
 
                                         date_default_timezone_set("Asia/Colombo");
                                         $current_date = date('Y-m-d');
+                                        $next_date = date('Y-m-d',(strtotime ( '+1 day' , strtotime ( $current_date) ) ));
                                         if(isset($details['check_in_date'])){
                                             echo 'value="' . $details['check_in_date'] . '"';
                                         }
@@ -115,9 +123,9 @@
                                         if(isset($details['check_out_date'])){
                                             echo 'value="' . $details['check_out_date'] . '"';
                                         }
-                                        // else {
-                                        //     echo 'value="'.$current_date.'"';
-                                        // } 
+                                        else {
+                                            echo 'value="'.$next_date.'"';
+                                        } 
                                     
                                     ?>
 

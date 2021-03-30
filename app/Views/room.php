@@ -13,18 +13,18 @@
 <body>
 
     <?php	if(isset($errors) && !empty($errors)) { ?>
-    <!-- echo '<script>alert("Enter Data is invalid")</script>'; -->
-    <button style="display:none;" id="error-state"
-        data-state="<?php if(isset($errors) && !empty($errors)){echo 'true';} ?>"
-        onclick="customAlert.alert('Enter Data is invalid')">
-        Custom Alert With No Heading
-    </button>
+        <button style="display:none;" id="error-state"
+            onclick="customAlert.alert('Enter Data is invalid')">
+        </button>
     <?php } else { ?>
-    <?php	if(isset($msg2)) { ?>
-    <?php	//echo '<script>alert("'.$msg2.'")</script>'; ?>
-    <button onload="customAlert.alert('This is a custom alert without heading.')">
-        Custom Alert With No Heading
-    </button>
+    <?php	if(isset($msg2)) {?>
+        <button style="display:none;" id="error-state"
+            onclick="customAlert.alert('Plaese login then Reserve Room')">
+        </button>
+    <?php }if(isset($msg3)) { ?>
+        <button style="display:none;" id="error-state"
+            onclick="customAlert.alert('No Rooms Available')">
+        </button>
     <?php }} ?>
 
 
