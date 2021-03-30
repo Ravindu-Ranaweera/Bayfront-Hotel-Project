@@ -312,9 +312,9 @@
                                 <?php  endfor; ?>
 
                                 <p><?php echo $value['guest_review'] ?></p>
-                                <?php $id =$value1['customer_id']; ?>
-                                <a href="#" onclick='showMore( <?php echo $id; ?>)'>Read More</a>
-                                <p id="<?Php echo $value1['customer_id']; ?>" style="display: none;">
+                                <?php $id =$value['feedback_id']; //echo $value['customer_id']; ?>
+                                <button onclick='showMore(<?php echo $id; ?>)'>Read More</button>
+                                <p id="<?Php echo $value['feedback_id']; ?>" style="display: none;">
                                     <?php echo $value['hotel_reply'] ?></p>
                             </figcaption>
                         </figure>
