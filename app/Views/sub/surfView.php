@@ -48,7 +48,7 @@
             <div class="package">
 
                 <img src="<?php echo BURL.'assets/img/surf/sub1.jpg' ?>" alt="" class="packImg">
-                <div class="price">
+                <div class="packageInfo">
                     <dl class="inline">
                         <p class="head">We offer experienced professional instructors in small groups which allows for
                             fast learning and lots of fun. Our lessons begin on the beach and in the easier white waves
@@ -96,7 +96,7 @@
             <div class="package">
 
                 <img src="<?php echo BURL.'assets/img/surf/sub2.jpg' ?>" alt="" class="packImg">
-                <div class="price">
+                <div class="packageInfo">
                     <dl class="inline">
                         <p class="head">Three to six people in the group but need to be booked as a with minimum 3
                             people. Unou Other guests may join this lesson. Too book a private group lesson and
@@ -152,7 +152,7 @@
             </ul>
             <div class="package">
                 <img src="<?php echo BURL.'assets/img/surf/sub4.jpg' ?>" alt="" class="packImg">
-                <div class="price">
+                <div class="packageInfo">
                     <dl class="inline">
                         <p class="head">We offer experienced professional instructors in small groups which allows for
                             fast learning and lots of fun. Our lessons begin on the beach and in the easier white waves
@@ -196,7 +196,7 @@
             <div class="package">
 
                 <img src="<?php echo BURL.'assets/img/surf/sub3.jpg' ?>" alt="" class="packImg">
-                <div class="price">
+                <div class="packageInfo">
                     <dl class="inline">
                         <p class="head">Three to six people in the group but need to be booked as a with minimum 3
                             people. Unou Other guests may join this lesson. Too book a private group lesson and
@@ -254,7 +254,7 @@
             <div class="package">
 
                 <img src="<?php echo BURL.'assets/img/surf/sub5.jpg' ?>" alt="" class="packImg">
-                <div class="price">
+                <div class="packageInfo">
                     <dl class="inline">
                         <p class="head">We offer experienced professional instructors in small groups which allows for
                             fast learning and lots of fun. Our lessons begin on the beach and in the easier white waves
@@ -298,7 +298,7 @@
             <div class="package">
 
                 <img src="<?php echo BURL.'assets/img/surf/sub6.jpg' ?>" alt="" class="packImg">
-                <div class="price">
+                <div class="packageInfo">
                     <dl class="inline">
                         <p class="head">Three to six people in the group but need to be booked as a with minimum 3
                             people. Unou Other guests may join this lesson. Too book a private group lesson and
@@ -349,7 +349,7 @@
             <div class="package">
 
                 <img src="<?php echo BURL.'assets/img/surf/sub7.jpg' ?>" alt="" class="packImg">
-                <div class="price">
+                <div class="packageInfo">
                     <dl class="inline">
                         <p class="head">We offer experienced professional instructors in small groups which allows for
                             fast learning and lots of fun. Our lessons begin on the beach and in the easier white waves
@@ -393,7 +393,7 @@
         <div class="package">
 
             <img src="<?php echo BURL.'assets/img/surf/sub8.jpg' ?>" alt="" class="packImg">
-            <div class="price">
+            <div class="packageInfo">
                 <dl class="inline">
                     <p class="head">Three to six people in the group but need to be booked as a with minimum 3 people.
                         Unou Other guests may join this lesson. Too book a private group lesson and guarantee other
@@ -444,7 +444,7 @@
             <div class="package">
 
                 <img src="<?php echo BURL.'assets/img/surf/sub9.jpg' ?>" alt="" class="packImg">
-                <div class="price">
+                <div class="packageInfo">
                     <dl class="inline">
                         <p class="head">We offer experienced professional instructors in small groups which allows for
                             fast learning and lots of fun. Our lessons begin on the beach and in the easier white waves
@@ -488,7 +488,7 @@
             <div class="package">
 
                 <img src="<?php echo BURL.'assets/img/surf/sub10.jpg' ?>" alt="" class="packImg">
-                <div class="price">
+                <div class="packageInfo">
                     <dl class="inline">
                         <p class="head">Three to six people in the group but need to be booked as a with minimum 3
                             people. Unou Other guests may join this lesson. Too book a private group lesson and
