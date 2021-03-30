@@ -47,7 +47,8 @@
                             <div class="row">
                                 <label for="#"><i class="material-icons">hotel</i>Room Type:</label>
                                 <div class="animate-form">
-                                    <select name="type_id" class="inputField" selected="">
+                                    <select name="type_id" class="inputField" selected="" required>
+                                        <option value="" style="border: none">Select Room Type</option>
                                         <option value="1"
                                             <?php if ($room['type_id'] == 1 ) echo ' selected="selected"'; ?>
                                             style="border: none">Single Room</option>
@@ -79,10 +80,8 @@
                                 <label for="#"><i class="material-icons">room</i>Floor Type:</label>
                                 <div class="animate-form" id="animate-form-floor_type">
                                     <select name="floor_type" class="inputField" selected=""
-                                        onchange="validateFloor(this)">
-                                        <option value=""
-                                            <?php if ($room['floor_type'] == "" ) echo ' selected="selected"'; ?>
-                                            style="border: none">Select The Floor</option>
+                                        onchange="validateFloor(this)" required>
+                                        <option value="" style="border: none">Select Floor Type </option>
                                         <option value="0"
                                             <?php if ($room['floor_type'] == 0 ) echo ' selected="selected"'; ?>
                                             style="border: none">Ground Floor</option>
@@ -99,19 +98,6 @@
                                             <?php if ($room['floor_type'] == 4 ) echo ' selected="selected"'; ?>
                                             style="border: none">Fourth Floor</option>
                                     </select>
-
-                                    <!-- <label for="name" class="label-name">
-                                        <?php if((isset($errors['floor_type'])) && (isset($room['room_number']))): ?>
-                                        <div id="alert0001">
-                                            <span class="content-name"><i
-                                                    class="material-icons">info</i><?php echo $errors['floor_type']; ?></span>
-                                        </div>
-                                        <?php else: ?>
-                                        <div style="display: none;" id="alert0001">
-                                            <span class="content-name"></span>
-                                        </div>
-                                        <?php endif; ?>
-                                    </label> -->
 
                                 </div>
                             </div>
@@ -130,7 +116,7 @@
                                     
                                     ?> oninput="validateRoomNo(this, 0,3)">
 
-                                    <!-- <label for="name" class="label-name">
+                                    <label for="name" class="label-name">
                                         <?php if((isset($errors['room_number'])) && (isset($room['room_number']))): ?>
                                         <div id="alert01">
                                             <span class="content-name"><i
@@ -141,7 +127,7 @@
                                             <span class="content-name"></span>
                                         </div>
                                         <?php endif; ?>
-                                    </label> -->
+                                    </label>
                                 </div>
                             </div>
 
@@ -177,7 +163,7 @@
                             <div class="row">
                                 <label for="#"><i class="material-icons">description</i>Room Description:</label>
                                 <div class="animate-form">
-                                    <textarea id="story" name="room-desc" rows="8" cols="60"
+                                    <textarea id="story" name="room-desc" rows=8 cols=55 maxlength=250 required
                                         oninput="validateRoomDesc(this, 0,255)">
 
                                     </textarea>
@@ -201,7 +187,7 @@
                                 <label for="#"><i class="material-icons">deck</i>Room View:</label>
                                 <div class="animate-form">
                                     <select name="room_view" class="inputField"
-                                        selected="<?php echo $room['room_view']; ?>">
+                                        selected="<?php echo $room['room_view']; ?>" required>
                                         <option value="" style="border: none">-Select Room View-</option>
                                         <option value="Garden View"
                                             <?php if ($room['room_view'] == "Garden View" ) echo ' selected="selected"'; ?>
@@ -214,13 +200,7 @@
                                             style="border: none">City View</option>
                                     </select>
 
-                                    <!-- <label for="name" class="label-name">
-                                        <?php if((isset($errors['room_view'])) && (isset($room['room_view']))): ?>
-                                        <span class="content-name"><i
-                                                class="material-icons">info</i><?php echo $errors['room_view']; ?></span>
 
-                                        <?php endif; ?>
-                                    </label> -->
                                 </div>
                             </div>
 
