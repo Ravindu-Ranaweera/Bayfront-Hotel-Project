@@ -14,13 +14,13 @@
 
     <?php include(VIEWS.'inc/header_navbar.php'); ?>
     <?php	if(isset($msg2) && $msg2 == "You have to Reserve the Room and Can Reserve Surf") { ?>
-        <button style="display:none;" id="error-state"
-            onclick="customAlert.alert('You have to Reserve the Room and Can Reserve Surf  Package')">
-        </button>
+    <button style="display:none;" id="error-state"
+        onclick="customAlert.alert('You have to Reserve the Room and Can Reserve Surf  Package')">
+    </button>
     <?php } if(isset($msg2) && $msg2 == "Plaese login then Reserve Surf") {?>
-        <button style="display:none;" id="error-state"
-            onclick="customAlert.alert('Plaese login then Reserve Surf Package')">
-        </button>
+    <button style="display:none;" id="error-state"
+        onclick="customAlert.alert('Plaese login then Reserve Surf Package')">
+    </button>
     <?php } ?>
     <?php 
 
@@ -71,10 +71,10 @@
                     <?php 
                             $package_id = 1;
                     ; ?>
-                    
+
                     <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
-                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                 
+                            class="fa fa-chevron-right" aria-hidden="true"></i></a>
+
                 </div>
 
             </div>
@@ -118,9 +118,9 @@
                             $package_id = 2;
                             ; ?>
 
-                        <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
-                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                    
+                    <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
+                            class="fa fa-chevron-right" aria-hidden="true"></i></a>
+
                 </div>
 
             </div>
@@ -178,9 +178,9 @@
                     <?php 
                             $package_id = 3;
                     ; ?>
-                    
+
                     <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
-                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                            class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 </div>
 
             </div>
@@ -228,9 +228,9 @@
                     <?php 
                             $package_id = 4;
                     ; ?>
-                    
+
                     <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
-                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                            class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 </div>
 
             </div>
@@ -290,9 +290,9 @@
                     <?php 
                             $package_id = 5;
                     ; ?>
-                    
+
                     <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
-                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                            class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 </div>
 
             </div>
@@ -304,10 +304,10 @@
                         <img src="<?php echo BURL.'assets/img/surf/prof3.jpg' ?>">
                         <div class="quote-container">
                             <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce hendrerit justo augue,
-                                    vitae lobortis sapien interdum ut. Phasellus condimentum leo ut sem pulvinar, in
-                                    sodales erat feugiat. Pellentesque ac cursus odio. Lorem ipsum dolor sit amet,
-                                    consectetur adipiscing elit. ”</p>
+                                <p>My girlfriend and I stayed here in a private room for 6 nights and did surf lessons
+                                    through the hostel each day. We had an awesome time at layback. The hostel is very
+                                    relaxed and surf instructors were great. The location is perfect as it is tucked
+                                    away but still close to everything you need. Definitely recommend. ”</p>
                             </blockquote>
                             <cite><span>Jan Baby</span><br>
                                 RMT<br>
@@ -340,9 +340,9 @@
                     <?php 
                             $package_id = 6;
                     ; ?>
-                    
+
                     <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
-                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                            class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 </div>
 
             </div>
@@ -365,16 +365,13 @@
     <div class="subPageView">
         <div class="first">
 
-            <p class="">Lorem psum dolor sit amet consectetur adipisicing elit. Minima neque illo consectetur velit
-                sint, necessitatibus, ipsum temporibus earum quod esse doloremque natus magni. Saepe, pariatur. Earum
-                beatae, sit id pariatur? Get behind the wheel of the M4 and prepare for explosive performance and the M
-                division’s renowned handling capabilities. Power comes from a 425-hp twin-turbo inline six-cylinder,
-                mated to either a six-speed manual or a paddle-shifted seven-speed automatic and rear-wheel drive. For
-                the ultimate M4, the Competition package makes 444 hp, with forged 20-inch wheels from the M4 GTS.
-                Offered as a coupe or convertible, the M4 lives up to the legendary performance of the M cars that came
-                before it.</p>
+            <p class="">During our surf lessons, we’ll be 4 hours at the beach daily. Out of those 4 hours, 2 hours are
+                intensive surf lessons with a lot of individual feedback. To prevent being out of energy right after the
+                morning session, we’ll take a short lunch break at the beach. After that, you’ll have the chance to
+                apply everything you’ve learnt during the day on your own, but always under surveillance of our team of
+                course. Here’s what we offer during our surf lessons:</p>
 
-            <h3> AT A GLANCE</h3>
+            <h3> 7 Day Package</h3>
             <div class="package">
 
                 <img src="<?php echo BURL.'assets/img/surf/sub7.jpg' ?>" alt="" class="packImg">
@@ -395,9 +392,9 @@
                     <?php 
                             $package_id = 7;
                     ; ?>
-                    
+
                     <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
-                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                            class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 </div>
 
             </div>
@@ -409,10 +406,10 @@
                         <img src="<?php echo BURL.'assets/img/surf/prof4.jpg' ?>"">
 				        <div class=" quote-container">
                         <blockquote>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce hendrerit justo augue,
-                                vitae lobortis sapien interdum ut. Phasellus condimentum leo ut sem pulvinar, in sodales
-                                erat feugiat. Pellentesque ac cursus odio. Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. ”</p>
+                            <p>Best surf instructors ever. They knows how to manage all situations easily and the
+                                teaching is really good. Not only do you get to learn surf and progress quickly with
+                                amazing local coaches, but you also get to live the local life, experience the best
+                                Weligama has to offer and get to know amazing people.”</p>
                         </blockquote>
                         <cite><span>Jan Baby</span><br>
                             RMT<br>
@@ -444,9 +441,9 @@
                 <?php 
                             $package_id = 8;
                     ; ?>
-                    
-                    <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
-                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
+
+                <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
+                        class="fa fa-chevron-right" aria-hidden="true"></i></a>
             </div>
 
         </div>
@@ -470,24 +467,20 @@
     <div class="subPageView">
         <div class="first">
 
-            <p class="">Lorem psum dolor sit amet consectetur adipisicing elit. Minima neque illo consectetur velit
-                sint, necessitatibus, ipsum temporibus earum quod esse doloremque natus magni. Saepe, pariatur. Earum
-                beatae, sit id pariatur? Get behind the wheel of the M4 and prepare for explosive performance and the M
-                division’s renowned handling capabilities. Power comes from a 425-hp twin-turbo inline six-cylinder,
-                mated to either a six-speed manual or a paddle-shifted seven-speed automatic and rear-wheel drive. For
-                the ultimate M4, the Competition package makes 444 hp, with forged 20-inch wheels from the M4 GTS.
-                Offered as a coupe or convertible, the M4 lives up to the legendary performance of the M cars that came
-                before it.</p>
+            <p class="">Personal attention is a central concept of our teaching philosophy. Therefore our surf classes
+                take place in small groups or as private surf lessons. This guarantees quick progress and safety, with
+                your coach having an eye on you the whole time. We will help you to get started. You will learn how to
+                get into the wave learn the take-off technique in the white water and finally the right position on your
+                board.</p>
 
-            <h3> AT A GLANCE</h3>
+            <h3> 7 Day and 3 Day Packages</h3>
             <div class="package">
 
                 <img src="<?php echo BURL.'assets/img/surf/sub9.jpg' ?>" alt="" class="packImg">
                 <div class="packageInfo">
                     <dl class="inline">
                         <p class="head">We offer experienced professional instructors in small groups which allows for
-                            fast learning and lots of fun. Our lessons begin on the beach and in the easier white waves
-                            where we take you through the basic theory and techniques of surfing..</p>
+                            fast learning and lots of fun.</p>
                         <dt>TOUR INCLUDES:</dt>
                         <dd>Camp, Board, Shoes</dd>
                         <dt>DAILY TIMES:</dt>
@@ -500,9 +493,9 @@
                     <?php 
                             $package_id = 9;
                     ; ?>
-                    
+
                     <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
-                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                            class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 </div>
 
             </div>
@@ -514,10 +507,12 @@
                         <img src="<?php echo BURL.'assets/img/surf/prof5.jpg' ?>">
                         <div class="quote-container">
                             <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce hendrerit justo augue,
-                                    vitae lobortis sapien interdum ut. Phasellus condimentum leo ut sem pulvinar, in
-                                    sodales erat feugiat. Pellentesque ac cursus odio. Lorem ipsum dolor sit amet,
-                                    consectetur adipiscing elit. ”</p>
+                                <p>We‘ve spent two nights in the 8-bed dorm of Layback Hostel and were positively
+                                    surprised about how big and neat the room was. The beds are super-comfortable and
+                                    there is a little terrace just above the room which I found very nice. Linda from
+                                    the hostel was very helpful in every situation and always made great effort to make
+                                    sure we had everything we needed. It was lovely! I would definitely book it again.”
+                                </p>
                             </blockquote>
                             <cite><span>Jan Baby</span><br>
                                 RMT<br>
@@ -535,9 +530,7 @@
                 <div class="packageInfo">
                     <dl class="inline">
                         <p class="head">Three to six people in the group but need to be booked as a with minimum 3
-                            people. Unou Other guests may join this lesson. Too book a private group lesson and
-                            guarantee other students won't join the particular lesson we will charge the duo rates.
-                            Price per person.</p>
+                            people. Unou Other guests may join this lesson. </p>
                         <dt>TOUR INCLUDES:</dt>
                         <dd>Camp, Board, Shoes</dd>
                         <dt>DAILY TIMES:</dt>
@@ -550,9 +543,9 @@
                     <?php 
                             $package_id = 10;
                     ; ?>
-                    
+
                     <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
-                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                            class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 </div>
 
             </div>
@@ -580,7 +573,7 @@
         navbar.classList.toggle("sticky");
     };
     </script>
-     <script>
+    <script>
     if (document.getElementById('error-state')) {
         console.log("shhshdhsdh");
         document.getElementById('error-state').click();
