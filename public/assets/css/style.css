@@ -72,7 +72,7 @@
 
 .package {
   margin-top: 40px;
-  height: 400px;
+  height: 436px;
   overflow: hidden;
   display: flex;
   flex-direction: row;
@@ -3528,7 +3528,8 @@ figure.imgBlockSurf.hover .title:after {
   text-overflow: ellipsis;
   text-transform: uppercase;
   color: rgb(var(--pure-material-onprimary-rgb, 255, 255, 255));
-  background-color: rgb(var(--pure-material-primary-rgb, 0, 77, 70));
+  /* background-color: rgb(var(--pure-material-primary-rgb, 0, 77, 70)); */
+  background-color: rgb(11, 9, 41);
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 1px 5px 0 rgba(0, 0, 0, 0.12);
   font-family: var(
@@ -3539,6 +3540,7 @@ figure.imgBlockSurf.hover .title:after {
     system-ui,
     -apple-system
   );
+  
   font-size: 14px;
   font-weight: 500;
   line-height: 36px;

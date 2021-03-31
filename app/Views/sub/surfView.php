@@ -5,6 +5,7 @@
 
     <meta charset="UTF-8">
     <link rel="icon" type="zoomImgage/png" href="<?php echo BURL.'assets/img/basic/favicon.png'; ?>" />
+    <script type="text/javascript" src="<?php echo BURL.'assets/js/alert.js'; ?>"></script>
     <title>BAYFRONT SURF</title>
 
 </head>
@@ -12,13 +13,17 @@
 <body>
 
     <?php include(VIEWS.'inc/header_navbar.php'); ?>
-
+    <?php	if(isset($msg2) && $msg2 == "You have to Reserve the Room and Can Reserve Surf") { ?>
+        <button style="display:none;" id="error-state"
+            onclick="customAlert.alert('You have to Reserve the Room and Can Reserve Surf  Package')">
+        </button>
+    <?php } if(isset($msg2) && $msg2 == "Plaese login then Reserve Surf") {?>
+        <button style="display:none;" id="error-state"
+            onclick="customAlert.alert('Plaese login then Reserve Surf Package')">
+        </button>
+    <?php } ?>
     <?php 
 
-        
-        if(isset($msg2)) {
-            echo '<script>alert("'.$msg2.'")</script>';
-        }
 
 
 			switch ($id) {
@@ -64,12 +69,12 @@
                         <dd>1 Lesson - 100USD</dd>
                     </dl>
                     <?php 
-                            $package_id = 2;
-                            ; ?>
-                    <div class="bttn">
-                        <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
+                            $package_id = 1;
+                    ; ?>
+                    
+                    <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
                                 class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                    </div>
+                 
                 </div>
 
             </div>
@@ -110,12 +115,12 @@
                         <dd>1 Lesson - 50USD</dd>
                     </dl>
                     <?php 
-                            $package_id = 3;
+                            $package_id = 2;
                             ; ?>
-                    <div class="bttn">
+
                         <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
                                 class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                    </div>
+                    
                 </div>
 
             </div>
@@ -170,7 +175,12 @@
                         <dt>PRICES:</dt>
                         <dd>1 Lesson - 100USD</dd>
                     </dl>
-                    <a class="btn" href="">BOOK NOW <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                    <?php 
+                            $package_id = 3;
+                    ; ?>
+                    
+                    <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
+                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 </div>
 
             </div>
@@ -215,7 +225,12 @@
                         <dt>PRICES:</dt>
                         <dd>1 Lesson - 50USD</dd>
                     </dl>
-                    <a class="btn" href="">BOOK NOW <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                    <?php 
+                            $package_id = 4;
+                    ; ?>
+                    
+                    <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
+                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 </div>
 
             </div>
@@ -272,7 +287,12 @@
                         <dt>PRICES:</dt>
                         <dd>1 Lesson - 100USD</dd>
                     </dl>
-                    <a class="btn" href="">BOOK NOW <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                    <?php 
+                            $package_id = 5;
+                    ; ?>
+                    
+                    <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
+                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 </div>
 
             </div>
@@ -317,7 +337,12 @@
                         <dt>PRICES:</dt>
                         <dd>1 Lesson - 50USD</dd>
                     </dl>
-                    <a class="btn" href="">BOOK NOW <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                    <?php 
+                            $package_id = 6;
+                    ; ?>
+                    
+                    <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
+                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 </div>
 
             </div>
@@ -367,7 +392,12 @@
                         <dt>PRICES:</dt>
                         <dd>1 Lesson - 100USD</dd>
                     </dl>
-                    <a class="btn" href="">BOOK NOW <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                    <?php 
+                            $package_id = 7;
+                    ; ?>
+                    
+                    <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
+                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 </div>
 
             </div>
@@ -411,7 +441,12 @@
                     <dt>PRICES:</dt>
                     <dd>1 Lesson - 50USD</dd>
                 </dl>
-                <a class="btn" href="">BOOK NOW <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                <?php 
+                            $package_id = 8;
+                    ; ?>
+                    
+                    <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
+                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
             </div>
 
         </div>
@@ -462,7 +497,12 @@
                         <dt>PRICES:</dt>
                         <dd>1 Lesson - 100USD</dd>
                     </dl>
-                    <a class="btn" href="">BOOK NOW <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                    <?php 
+                            $package_id = 9;
+                    ; ?>
+                    
+                    <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
+                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 </div>
 
             </div>
@@ -507,7 +547,12 @@
                         <dt>PRICES:</dt>
                         <dd>1 Lesson - 50USD</dd>
                     </dl>
-                    <a class="btn" href="">BOOK NOW <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                    <?php 
+                            $package_id = 10;
+                    ; ?>
+                    
+                    <a class="btn" href="<?php url('Surf/reservation/'.$package_id.'/'.$id); ?>">BOOK NOW<i
+                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
                 </div>
 
             </div>
@@ -534,6 +579,12 @@
         // console.log(navbar);
         navbar.classList.toggle("sticky");
     };
+    </script>
+     <script>
+    if (document.getElementById('error-state')) {
+        console.log("shhshdhsdh");
+        document.getElementById('error-state').click();
+    }
     </script>
 </body>
 

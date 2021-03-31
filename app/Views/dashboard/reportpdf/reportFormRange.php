@@ -72,11 +72,12 @@
 
                                         date_default_timezone_set("Asia/Colombo");
                                         $current_date = date('Y-m-d');
+                                        $previous_month = date('Y-m-d',(strtotime ( '-30 day' , strtotime ( $current_date) ) ));
                                         if(isset($report['start_date'])){
                                             echo 'value="' . $report['start_date'] . '"';
                                         }
                                         else {
-                                            echo 'value="'.$current_date .'"';
+                                            echo 'value="'.$previous_month .'"';
                                         } 
                                     
                                     ?>
@@ -103,6 +104,9 @@
                                         if(isset($report['end_date'])){
                                             echo 'value="' . $report['end_date'] . '"';
                                         }
+                                        else {
+                                            echo 'value="'.$current_date .'"';
+                                        } 
                                         
                                     
                                     ?>

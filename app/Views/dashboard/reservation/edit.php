@@ -28,11 +28,11 @@
             else if(isset($errors['check_in_date']) && isset($errors['check_out_date'])) {
                 $msg = "Check In and Out Dates Invalid";
             }
-            echo '<script>alert("'.$msg.'")</script>';
+            // echo '<script>alert("'.$msg.'")</script>';
         }
         elseif(isset($success)) {
             $msg = "Reservation Updated Successfully";
-            echo '<script>alert("'.$msg.'")</script>'; 
+            // echo '<script>alert("'.$msg.'")</script>';
         }
 
         
@@ -49,6 +49,24 @@
                         <span>
                             <a href="<?php url("reservation/details"); ?>" class="addnew"><i class="material-icons">reply_all</i></a>  
                         </span>
+                        <?php if(isset($errors)) { ?>
+                        <div class="notifyclass">
+                            <span class="notifyError">
+                                <h3 class="error-style">
+                                    <?php echo $msg; ?>
+                                </h3>
+                            </span>
+                        </div> 
+                            
+                        <?php } elseif(isset($success)) { ?>
+                            <div class="notifyclass">
+                                <span class="notifyError">
+                                    <h3 class="success-style">
+                                        <?php echo $msg; ?>
+                                    </h3>
+                                </span>
+                            </div> 
+                        <?php } ?>
                         </h4>  
                     </div>
 

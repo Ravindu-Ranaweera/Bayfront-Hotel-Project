@@ -32,15 +32,16 @@
         <?php 
                         date_default_timezone_set("Asia/Colombo");
                         $current_date = date('Y-m-d');
+                        $next_date = date('Y-m-d',(strtotime ( '+1 day' , strtotime ( $current_date) ) ));
         ?>
 
 	<div class="bookingFormContainerY">
 		<div class="blockY chech-in">
 			<label >Check in</label>
            	<div id='check-in' class='form-fieldY'>
-                <input type="date" name="check_in_date" value=""  placeholder="9 July, 2016"
+                <input type="date" name="check_in_date"  placeholder="9 July, 2016"
                 <?php 
-                echo 'min="'.$current_date .'"';
+                echo 'min="'.$current_date .'" value="'.$current_date .'"';
                 ?>
                 >
                 <!-- <div class='datepicker'><i class="fa fa-calendar" aria-hidden="true"></i></div> -->
@@ -49,9 +50,9 @@
 		<div class="blockY check-out">
 			<label >Check out</label>
                 <div id='check-out' class='form-fieldY'>
-                    <input type="date" name="check_out_date" value="" placeholder="19 July, 2016"
+                    <input type="date" name="check_out_date" placeholder="19 July, 2016"
                     <?php 
-                        echo 'min="'.$current_date .'"';
+                    echo 'min="'.$current_date .'" value="'.$next_date .'"';
                         ?>
                     >
                  	<!-- <div class='datepicker'><i class="fa fa-calendar" aria-hidden="true"></i></div> -->

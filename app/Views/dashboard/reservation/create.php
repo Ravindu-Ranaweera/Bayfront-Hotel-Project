@@ -566,6 +566,7 @@
 
                                         date_default_timezone_set("Asia/Colombo");
                                         $current_date = date('Y-m-d');
+                                        $next_date = date('Y-m-d',(strtotime ( '+1 day' , strtotime ( $current_date) ) ));
                                         if(isset($reservation['check_in_date'])){
                                             echo 'value="' . $reservation['check_in_date'] . '"';
                                         }
@@ -599,7 +600,9 @@
                                         if(isset($reservation['check_out_date'])){
                                             echo 'value="' . $reservation['check_out_date'] . '"';
                                         }
-                                    
+                                        else {
+                                            echo 'value="'.$next_date .'"';
+                                        } 
                                     ?>
 
                                     <?php 

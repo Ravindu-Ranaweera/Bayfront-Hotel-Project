@@ -43,6 +43,7 @@ class SurfController{
                     }
                     
                 }
+                
                 // Create new Surf Reservation
                 $surf = new SurfPackageBooked;
                 $result = $surf->createSurfReservation($package_id, $max_id, $customer_id);
