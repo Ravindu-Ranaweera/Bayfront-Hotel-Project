@@ -344,7 +344,7 @@ dl.bookings dt {
                 <h3><?php echo $_SESSION['unreg_user_name']; ?> </h3>
                 <h5><?php echo $_SESSION['unreg_user_email']; ?></h5>
             </div>
-            <?php if(isset($customer_details)):?>
+            <?php if(isset($customer_details) && $customer_details != NULL  ):?>
 
             <dl class="bookings">
                 <dt>First Name:</dt>
@@ -361,6 +361,7 @@ dl.bookings dt {
             <?php endif;?>
         </div>
 
+        <?php if (isset($resevation_details)): ?>
         <div class="set2">
             <?php  foreach ($reservation_details as $key=>$value): //var_dump($value); ?>
             <?php if ($value['request']== 0 && $value['is_valid']== 1):?>
@@ -370,35 +371,37 @@ dl.bookings dt {
                         date_default_timezone_set("Asia/Kolkata"); 
                         $get = date("Y-m-d");
                             if ($get >= $value['check_out_date']):?>
-                            <span style="background-color: red;">CHEK OUT</span>
+                    <span style="background-color: red;">CHEK OUT</span>
 
                     <?php endif;?>
                     <?php   
                             if ($get < $value['check_in_date']): ?>
-                            <span style="background-color: orange;">CHEK IN</span>
-                            <?php  foreach ($rooms as $key1=>$value1): //var_dump($value); ?>
-                                <?php  if($value1['room_id'] == $value['room_id']): //var_dump($value); ?>
-                                    <?php if($value1['free_canselaration'] == 1): ?>
-                                        <?php 
+                    <span style="background-color: orange;">CHEK IN</span>
+                    <?php  foreach ($rooms as $key1=>$value1): //var_dump($value); ?>
+                    <?php  if($value1['room_id'] == $value['room_id']): //var_dump($value); ?>
+                    <?php if($value1['free_canselaration'] == 1): ?>
+                    <?php 
                                            $dateValid = date('Y-m-d',(strtotime ( '-2 day' , strtotime ( $value['check_in_date']) ) ));
                                         //    echo $dateValid; 
                                         //    echo $get;
                                             // die();
                                             if($get < $dateValid)  {
                                         ?>
-                                        <span style="background-color: red;"><a href="<?php url('profile/cancelBooking/'.$value1['room_id'].'/'.$value['check_in_date'].'/'.$value['check_out_date'].'/'.$customer_details['email']);?>">CANCEL BOOKING</a></span>
-                                        <?php } ?>
-                                    
-                                <?php endif; ?>
-                            <?php endif; ?>
-                            <?php endforeach; ?>
-                            
-                            
+                    <span style="background-color: red;"><a
+                            href="<?php url('profile/cancelBooking/'.$value1['room_id'].'/'.$value['check_in_date'].'/'.$value['check_out_date'].'/'.$customer_details['email']);?>">CANCEL
+                            BOOKING</a></span>
+                    <?php } ?>
+
+                    <?php endif; ?>
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+
+
 
                     <?php endif;?>
                     <?php 
                             if ($get >= $value['check_in_date'] && $get <= $value['check_out_date']): ?>
-                            <span style="background-color: green;">PROCCESING</span>
+                    <span style="background-color: green;">PROCCESING</span>
 
                     <?php endif;?>
 
@@ -533,6 +536,7 @@ dl.bookings dt {
             <?php endforeach; ?>
 
         </div>
+        <?php endif; ?>
 
     </div>
 

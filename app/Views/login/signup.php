@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="<?php echo BURL.'assets/css/login.css'; ?>"> -->
+    <link rel="icon" type="image/png" href="<?php echo BURL.'assets/img/basic/favicon.png'; ?>" />
     <script type="text/javascript" src="<?php echo BURL.'assets/js/validateLogin.js'; ?>"></script>
     <title>Sign in & Sign up Form</title>
 </head>
@@ -170,7 +170,6 @@ select:-webkit-autofill:focus {
             rgba(17, 106, 197, 1) 91.1%);
     transition: 1.8s ease-in-out;
     border-radius: 50%;
-    z-index: 6;
 }
 
 .image {
@@ -204,6 +203,10 @@ select:-webkit-autofill:focus {
     transition-delay: 0.6s;
 }
 
+.content {
+    z-index: 300;
+}
+
 .panel h3 {
     font-weight: 600;
     line-height: 1;
@@ -216,7 +219,7 @@ select:-webkit-autofill:focus {
 }
 
 .btn.transparent {
-    margin: 0;
+    margin: 30 auto;
     background: none;
     border: 2px solid #fff;
     width: 130px;
@@ -316,18 +319,19 @@ select:-webkit-autofill:focus {
     }
 
     .panel h3 {
-        font-size: 1.2rem;
+        font-size: 19px;
     }
 
     .panel p {
-        font-size: 0.7rem;
-        padding: 0.5rem 0;
+        font-size: 11px;
+        padding: 8px 0;
     }
 
     .btn.transparent {
         width: 110px;
         height: 35px;
-        font-size: 0.7rem;
+        margin: 30px auto;
+        font-size: 11px;
     }
 
     .container:before {
@@ -370,7 +374,7 @@ select:-webkit-autofill:focus {
 
 @media (max-width: 570px) {
     form {
-        padding: 0 1.5rem;
+        padding: 0 24px;
     }
 
     .image {
@@ -378,11 +382,11 @@ select:-webkit-autofill:focus {
     }
 
     .panel .content {
-        padding: 0.5rem 1rem;
+        padding: 8px 16px;
     }
 
     .container {
-        padding: 1.5rem;
+        padding: 24px;
     }
 
     .container:before {
@@ -539,8 +543,7 @@ select:-webkit-autofill:focus {
                 <div class="content">
                     <h3>Already Registered User?</h3>
 
-                    <a href="<?php url('Home/login'); ?>" style="z-index: 100;  "><button class="btn transparent"
-                            id="sign-in-btn">Sign
+                    <a href="<?php url('Home/login'); ?>  "><button class="btn transparent" id="sign-in-btn">Sign
                             in</button> </a>
                 </div>
                 <img src="<?php echo BURL.'assets/img/register.svg'; ?>" class="image" alt="" />

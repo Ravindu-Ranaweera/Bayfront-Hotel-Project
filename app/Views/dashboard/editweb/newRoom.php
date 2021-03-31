@@ -103,10 +103,10 @@
                             </div>
 
 
-                            <div class="row" style="display:none;" id="room-no">
+                            <div class="row" id="room-no">
                                 <label for="#"><i class="material-icons">admin_panel_settings</i>Room Number:</label>
                                 <div class="animate-form" id="animate-form-room-no">
-                                    <input type="number" autocomplete="off" name="room_number" class="inputFieldDate" <?php 
+                                    <input type="number" autocomplete="off" name="room_number" class="inputField" <?php 
                                         if(isset($room['room_number'])){
                                             echo 'value="' . $room['room_number'] . '"';
                                         }
@@ -117,10 +117,10 @@
                                     ?> oninput="validateRoomNo(this, 0,3)">
 
                                     <label for="name" class="label-name">
-                                        <?php if((isset($errors['room_number'])) && (isset($room['room_number']))): ?>
+                                        <?php if((isset($errorsNew['room_number'])) && (isset($room['room_number']))): ?>
                                         <div id="alert01">
                                             <span class="content-name"><i
-                                                    class="material-icons">info</i><?php echo $errors['room_number']; ?></span>
+                                                    class="material-icons">info</i><?php echo $errorsNew['room_number']; ?></span>
                                         </div>
                                         <?php else: ?>
                                         <div style="display: none;" id="alert01">
@@ -146,10 +146,10 @@
                                     ?> oninput="validateRoomName(this, 0,50)">
 
                                     <label for="name" class="label-name">
-                                        <?php if((isset($errors['room_name'])) && (isset($room['room_name']))): ?>
+                                        <?php if((isset($errorsNew['room_name'])) && (isset($room['room_name']))): ?>
                                         <div id="alert02">
                                             <span class="content-name"><i
-                                                    class="material-icons">info</i><?php echo $errors['room_name']; ?></span>
+                                                    class="material-icons">info</i><?php echo $errorsNew['room_name']; ?></span>
                                         </div>
                                         <?php else: ?>
                                         <div style="display: none;" id="alert02">
@@ -169,10 +169,10 @@
                                     </textarea>
 
                                     <label for="name" class="label-name">
-                                        <?php if((isset($errors['room_name'])) && (isset($room['room_name']))): ?>
+                                        <?php if((isset($errorsNew['room_name'])) && (isset($room['room_name']))): ?>
                                         <div id="alert002">
                                             <div style="display: none;" id="alert002"><span class="content-name"><i
-                                                        class="material-icons">info</i><?php echo $errors['room_name']; ?></span>
+                                                        class="material-icons">info</i><?php echo $errorsNew['room_name']; ?></span>
                                             </div>
                                             <?php else: ?>
                                             <div style="display: none;" id="alert002">
@@ -218,10 +218,10 @@
                                     ?> oninput="validateRoomSize(this, 0,10)">
 
                                     <label for="name" class="label-name">
-                                        <?php if((isset($errors['room_size'])) && (isset($room['room_size']))): ?>
+                                        <?php if((isset($errorsNew['room_size'])) && (isset($room['room_size']))): ?>
                                         <div id="alert04">
                                             <span class="content-name"><i
-                                                    class="material-icons">info</i><?php echo $errors['room_size']; ?></span>
+                                                    class="material-icons">info</i><?php echo $errorsNew['room_size']; ?></span>
                                         </div>
                                         <?php else: ?>
                                         <div style="display: none;" id="alert04">
@@ -249,10 +249,10 @@
                                     ?> oninput="validateRoomPrice(this, 0,10)">
 
                                     <label for="name" class="label-name">
-                                        <?php if((isset($errors['price'])) && (isset($room['price']))): ?>
+                                        <?php if((isset($errorsNew['price'])) && (isset($room['price']))): ?>
                                         <div id="alert05">
                                             <span class="content-name"><i
-                                                    class="material-icons">info</i><?php echo $errors['price']; ?></span>
+                                                    class="material-icons">info</i><?php echo $errorsNew['price']; ?></span>
                                         </div>
                                         <?php else: ?>
                                         <div style="display: none;" id="alert05">
@@ -319,8 +319,9 @@
                                     </div>
 
                                     <div class="line">
-                                        <?php if((isset($errors['img'])) ): ?>
-                                        <p class=""><i class="material-icons">info</i><?php echo $errors['img']; ?></p>
+                                        <?php if((isset($errorsNew['img'])) ): ?>
+                                        <p class=""><i class="material-icons">info</i><?php echo $errorsNew['img']; ?>
+                                        </p>
                                         <?php endif; ?>
                                     </div>
                                 </div>

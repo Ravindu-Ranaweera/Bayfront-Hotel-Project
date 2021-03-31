@@ -37,7 +37,7 @@
                 <div class="cardbody">
                     <form action="<?php url("editweb/update"); ?>" method="post" class="addnewform"
                         enctype="multipart/form-data">
-
+                        <input type="hidden" name="room_id" value="<?php echo $room_details[0]['room_id']; ?>">
                         <div class="section1">
 
 
@@ -78,7 +78,7 @@
                             <div class="row">
 
                                 <label for="#"><i class="material-icons">room</i>Floor Type:</label>
-                                <div class="animate-form">
+                                <div class="animate-form" id="animate-form-floor_type">
                                     <select name="floor_type" class="inputField"
                                         selected="<?php echo $room_details[0]['type_id']; ?>" required>
                                         <option value="" style="border: none">Select The Floor</option>
@@ -105,20 +105,29 @@
                             <div class="row">
                                 <label for="#"><i class="material-icons">admin_panel_settings</i>Room Number:</label>
                                 <div class="animate-form">
-                                    <input type="text" autocomplete="off" name="room_number" class="inputField" <?php 
-                                        if(isset($room_details[0]['room_number'])){
-                                            echo 'value="' . $room_details[0]['room_number'] . '"';
+                                    <input type="number" autocomplete="off" name="room_number" maxlength="4"
+                                        class="inputField" <?php
+                                    $str = substr($room_details[0]['room_number'], 1); 
+                                        if(isset($str)){
+                                            echo 'value="' . $str . '"';
                                         }
                                         else {
                                             echo 'placeholder="B102"';
                                         } 
                                     
-                                    ?> required>
+                                    ?>oninput="validateRoomNo(this, 0,3)">
 
                                     <label for="name" class="label-name">
+
                                         <?php if((isset($errors['room_number'])) && (isset($room_details[0]['room_number']))): ?>
-                                        <span class="content-name"><i
-                                                class="material-icons">info</i><?php echo $errors['room_number']; ?></span>
+                                        <div id="alert01">
+                                            <span class="content-name"><i
+                                                    class="material-icons">info</i><?php echo $errors['room_number']; ?></span>
+                                        </div>
+                                        <?php else: ?>
+                                        <div style="display: none;" id="alert01">
+                                            <span class="content-name"></span>
+                                        </div>
                                         <?php endif; ?>
                                         <?php if(isset($success)): ?>
                                         <span class="content-success"><i class="material-icons">verified_user</i>Updated
@@ -142,12 +151,18 @@
                                             echo 'placeholder="Budget Single Room"';
                                         } 
                                     
-                                    ?> required>
+                                    ?> oninput="validateRoomName(this, 0,50)">
 
                                     <label for="name" class="label-name">
-                                        <?php if((isset($errors['room_name'])) && (isset($room_details[0]['room_name']))): ?>
-                                        <span class="content-name"><i
-                                                class="material-icons">info</i><?php echo $errors['room_name']; ?></span>
+                                        <?php if((isset($errors['room_name'])) && (isset($room_details[0]['room_number']))): ?>
+                                        <div id="alert02">
+                                            <span class="content-name"><i
+                                                    class="material-icons">info</i><?php echo $errors['room_name']; ?></span>
+                                        </div>
+                                        <?php else: ?>
+                                        <div style="display: none;" id="alert02">
+                                            <span class="content-name"></span>
+                                        </div>
                                         <?php endif; ?>
                                         <?php if(isset($success)): ?>
                                         <span class="content-success"><i class="material-icons">verified_user</i>Updated
@@ -160,7 +175,7 @@
                             <div class="row">
                                 <label for="#"><i class="material-icons">description</i>Room Description:</label>
                                 <div class="animate-form">
-                                    <textarea id="story" name="room-desc" rows=8 cols=55 maxlength=250 required
+                                    <textarea id="story" name="room-desc" rows=8 cols=55 maxlength=255 required
                                         oninput="validateRoomDesc(this, 0,255)"><?php echo   $room_details[0]['room_desc']; ?>
 
                                     </textarea>
@@ -201,7 +216,7 @@
                             </div>
 
                             <div class="row">
-                                <label for="#"><i class="material-icons">cast_for_education</i>Room Size:</label>
+                                <label for="#"><i class="material-icons">cast_for_education</i>Room Size (sqft):</label>
                                 <div class="animate-form">
                                     <input type="text" autocomplete="off" name="room_size" class="inputField" <?php 
                                         if(isset($room_details[0]['room_size'])){
@@ -211,12 +226,19 @@
                                             echo 'placeholder="45"';
                                         } 
                                     
-                                    ?> required>
+                                    ?> oninput="validateRoomSize(this, 0,10)">
 
                                     <label for="name" class="label-name">
+
                                         <?php if((isset($errors['room_size'])) && (isset($room_details[0]['room_size']))): ?>
-                                        <span class="content-name"><i
-                                                class="material-icons">info</i><?php echo $errors['room_size']; ?></span>
+                                        <div id="alert04">
+                                            <span class="content-name"><i
+                                                    class="material-icons">info</i><?php echo $errors['room_size']; ?></span>
+                                        </div>
+                                        <?php else: ?>
+                                        <div style="display: none;" id="alert04">
+                                            <span class="content-name"></span>
+                                        </div>
                                         <?php endif; ?>
                                         <?php if(isset($success)): ?>
                                         <span class="content-success"><i class="material-icons">verified_user</i>Updated
@@ -242,12 +264,19 @@
                                             echo 'placeholder="1000"';
                                         } 
                                     
-                                    ?> required>
+                                    ?> oninput="validateRoomPrice(this, 0,10)">
 
                                     <label for="name" class="label-name">
+
                                         <?php if((isset($errors['price'])) && (isset($room_details[0]['price']))): ?>
-                                        <span class="content-name"><i
-                                                class="material-icons">info</i><?php echo $errors['price']; ?></span>
+                                        <div id="alert05">
+                                            <span class="content-name"><i
+                                                    class="material-icons">info</i><?php echo $errors['price']; ?></span>
+                                        </div>
+                                        <?php else: ?>
+                                        <div style="display: none;" id="alert05">
+                                            <span class="content-name"></span>
+                                        </div>
                                         <?php endif; ?>
                                         <?php if(isset($success)): ?>
                                         <span class="content-success"><i class="material-icons">verified_user</i>Updated

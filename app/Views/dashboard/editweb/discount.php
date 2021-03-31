@@ -8,7 +8,7 @@
 <div class="wrapper">
 
     <?php 
-            $navbar_title = "Search Room Page";
+            $navbar_title = "Edit Room Page";
             $search = 0;
             $search_by = '#';
        
@@ -22,7 +22,7 @@
 
                 <div class="cardheader">
                     <div class="options">
-                        <h4>Customer View
+                        <h4>Set Discount
                             <span>
                                 <a href="<?php url("customer/index"); ?>" class="addnew"><i
                                         class="material-icons">reply_all</i></a>
@@ -32,7 +32,7 @@
                         </h4>
                     </div>
 
-                    <p class="textfortabel">Include Following Details</p>
+                    <p class="textfortabel">Modify Discount Value For The Every Room Type</p>
                 </div>
 
                 <div class="cardbody">
@@ -66,7 +66,7 @@
 
                                 <label for="#"><i class="material-icons">local_offer</i>Room Discount:</label>
                                 <div class="animate-form">
-                                    <input type="text" autocomplete="off" name="discount" class="inputField" <?php 
+                                    <input type="number" min="0" autocomplete="off" name="discount" class="inputField" <?php 
                                             if(isset($room_details[0]['room_view'])){
                                                 echo 'value="' . $room_details[0]['room_view'] . '"';
                                             }
@@ -74,12 +74,18 @@
                                                 echo 'placeholder="Room Discount"';
                                             } 
                                         
-                                        ?> required>
+                                        ?> oninput="validateRoomDiscount(this, 0,4)">
 
                                     <label for="name" class="label-name">
-                                        <?php if((isset($errors['room_view'])) && (isset($room_details[0]['room_view']))): ?>
-                                        <span class="content-name"><i
-                                                class="material-icons">info</i><?php echo $errors['room_view']; ?></span>
+                                        <?php if((isset($errors['room_name'])) && (isset($room_details[0]['room_number']))): ?>
+                                        <div id="alert10">
+                                            <span class="content-name"><i
+                                                    class="material-icons">info</i><?php echo $errors['room_name']; ?></span>
+                                        </div>
+                                        <?php else: ?>
+                                        <div style="display: none;" id="alert10">
+                                            <span class="content-name"></span>
+                                        </div>
                                         <?php endif; ?>
                                         <?php if(isset($success)): ?>
                                         <span class="content-success"><i class="material-icons">verified_user</i>Updated

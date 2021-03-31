@@ -29,21 +29,25 @@ class Profile extends Connection {
                     LIMIT 1";
         $customer = mysqli_query($this->connection, $query1);
         $row = mysqli_fetch_assoc($customer);
-        $customer_id = $row['customer_id'];
         
-        $query = "SELECT * FROM $this->reservation_table
-                  WHERE customer_id = '{$customer_id}' AND is_valid =1";
-// echo $query;exit;
-        $reservations = mysqli_query($this->connection, $query);
-        if($reservations) {
-            $reservations= mysqli_fetch_all($reservations,MYSQLI_ASSOC);
-        }
-        else {
-            echo "Database Query Failed";
-        }    
+        
+        if($row!= NULL){
+            $customer_id = $row['customer_id'];
+            $query = "SELECT * FROM $this->reservation_table
+            WHERE customer_id = '{$customer_id}' AND is_valid =1";
+            // echo $query;exit;
+            $reservations = mysqli_query($this->connection, $query);
+            if($reservations) {
+                $reservations= mysqli_fetch_all($reservations,MYSQLI_ASSOC);
+            }
+            else {
+                echo "Database Query Failed";
+            }    
 
-// var_dump($reservations); exit;
-        return $reservations;
+            // var_dump($reservations); exit;
+            return $reservations;
+        }
+       
 
     }
 

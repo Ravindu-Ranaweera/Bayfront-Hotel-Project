@@ -2,7 +2,7 @@ function validateRoomNo(ele, min, max){
     var errors = Array();
     var lengthTxt = ele.value.trim().length;
     var Txt = ele.value.trim();
-    // console.log(ele);
+    // console.log(Txt);
 
     if (lengthTxt > max) {
         errors.push("Your Input Must Be Less than "+max)
@@ -12,7 +12,7 @@ function validateRoomNo(ele, min, max){
     }
     var typeDiv = document.querySelector("#animate-form-floor_type select");
     var floor = typeDiv.value;
-    console.log(floor);
+    // console.log(floor);
       
         
             if (floor == 0){
@@ -210,6 +210,40 @@ function validateRoomPrice(ele, min, max){
     }else{
         var preDivInsideP = document.querySelector("#alert05 span");
         var preDiv = document.getElementById("alert05");
+        preDiv.style = "display:none;";
+    }
+}
+
+function validateRoomDiscount(ele, min, max){
+    var errors = Array();
+    var lengthTxt = ele.value.trim().length;
+    var Txt = ele.value.trim();
+    console.log(Txt);
+    console.log(lengthTxt);
+
+    if (lengthTxt > max) {
+        errors.push("Your Input Must Be Less than "+max+" Digits")
+    }
+      
+    var typeformat =/^[0-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/;
+    if(!Txt.match(typeformat)  && lengthTxt != 0){
+        errors.push("Room Discount is Two decimal point Number.");
+    }
+    if(Txt> 100.00){
+        errors.push("Room Discount Not Around 100%.");
+    }
+    if (lengthTxt == 0) {
+        errors.push("Room Discount Field Required");
+    }
+    if (errors.length > 0) {
+        var preDivInsideP = document.querySelector("#alert10 span");
+        var preDiv = document.getElementById("alert10");
+        // console.log(preDivInsideP);
+        preDiv.style = "display: block;";
+        preDivInsideP.innerHTML = '<i class="material-icons">info</i>'+ errors[0];
+    }else{
+        var preDivInsideP = document.querySelector("#alert10 span");
+        var preDiv = document.getElementById("alert10");
         preDiv.style = "display:none;";
     }
 }

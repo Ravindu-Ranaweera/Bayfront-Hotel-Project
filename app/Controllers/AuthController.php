@@ -88,6 +88,8 @@ class AuthController {
 						$db = new Image();
 						$imageRoom =$db->viewRoom();
 						$data['img_details'] = $imageRoom;
+						$db = new RoomEdit();
+            $data['discount_details'] = $db->getAllDiscount();
 						view::load('home', $data);
 						exit();
 					}
@@ -262,6 +264,9 @@ class AuthController {
 					$db = new Image();
 					$imageRoom =$db->viewRoom();
 					$data['img_details'] = $imageRoom;
+
+					$db = new RoomEdit();
+            $data['discount_details'] = $db->getAllDiscount();
 			view::load('home', $data);
 			exit();
 		

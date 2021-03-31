@@ -58,37 +58,71 @@ class EditwebController{
     }
 
     public function updateDiscount(){
+        $errors =array();
         if(isset($_POST['submit'])){
-            // echo '<pre>', print_r($_POST) ,'</pre>';
-            // exit();
+            //echo '<pre>', print_r($_POST) ,'</pre>';
+            //exit();
 
             $type_name =$_POST['type_name'];
             $dis =$_POST['discount'];
             $start =$_POST['start_date'];
             $end =$_POST['end_date'];
-
-
-            $db = new RoomType();
-            $type = $db->getTypeID($type_name);
-            $type_id = $type['room_type_id'];
             
-            $db = new RoomType();
-            if($db->updateTypeDiscount($type_id, $dis, $start, $end)){
+            if(empty($dis)){
+                if($dis != 0 || $dis == ""){
+                $errors['discount'] = 'Discount Field required';
+                }
+            }else{
+                if(!preg_match("/^[0-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/" , $dis)){
+                    $errors['discount'] = 'Entered Discount is Invalid';
+                }
+
+                if($dis > 100.00){
+                    $errors['discount'] = 'Discount is Too Large';
+                }
+                
+            }
+
+            if($start > $end){
+                $errors['date'] = 'Invalid Date Input';
+            }
+            if(count( $errors ) == 0) {
+                $db = new RoomType();
+                $type = $db->getTypeID($type_name);
+                $type_id = $type['room_type_id'];
+                
+                $db = new RoomType();
+                if($db->updateTypeDiscount($type_id, $dis, $start, $end)){
+
+                    $db = new RoomType();
+                    $typename = $db->getRoomTypes();
+                    $data['typename'] = $typename;
+
+                    $db = new RoomType();
+                    $type = $db->getTypes();
+                    $data['type'] = $type;
+                    
+                    $db = new RoomEdit();
+                    $data['discount_details'] = $db->getAllDiscount();
+                    // var_dump($data['type']); exit;
+                        view::load('dashboard/editweb/discount', $data);
+                }
+            }else{
+                $db = new RoomType();
+                $typename = $db->getRoomTypes();
+                $data['typename'] = $typename;
 
                 $db = new RoomType();
-            $typename = $db->getRoomTypes();
-            $data['typename'] = $typename;
-
-            $db = new RoomType();
-            $type = $db->getTypes();
-            $data['type'] = $type;
-            
-            $db = new RoomEdit();
-            $data['discount_details'] = $db->getAllDiscount();
-            // var_dump($data['type']); exit;
+                $type = $db->getTypes();
+                $data['type'] = $type;
+                
+                $db = new RoomEdit();
+                $data['discount_details'] = $db->getAllDiscount();
+                // var_dump($data['type']); exit;
+                $data['errors'] = $errors;
                 view::load('dashboard/editweb/discount', $data);
             }
-            // var_dump($data['type']); exit;
+            
         }
            
     }
@@ -145,16 +179,13 @@ class EditwebController{
         }
 
         else {
-            
-
-            $data['room'] = array("room_number"=>"", "room_name"=>"", "type_id"=>"", "room_desc"=>"", "price"=>"", "room_view"=>"", "floor_type"=>"10", "room_size"=>"", "air_condition"=>"", "free_canseleration"=>"", "hot_water"=>"", "breakfast_included"=>"");
+             $data['room'] = array("room_number"=>"", "room_name"=>"", "type_id"=>"", "room_desc"=>"", "price"=>"", "room_view"=>"", "floor_type"=>"10", "room_size"=>"", "air_condition"=>"", "free_canseleration"=>"", "hot_water"=>"", "breakfast_included"=>"");
             view::load('dashboard/editweb/newRoom', $data);
-
         }
     }
 
     public function create() {
-        $errors =array();
+        $errorsNew =array();
         if(!isset($_SESSION['user_id'])) {
             view::load('dashboard/dashboard');    
         }
@@ -170,9 +201,6 @@ class EditwebController{
                 $room_view = $_POST['room_view'];
                 $floor_type = $_POST['floor_type'];
 
-                $discount = $_POST['discount'];
-                $start_date = $_POST['start_date'];
-                $end_date = $_POST['end_date'];
 
                 $room_size = $_POST['room_size'];
                 $room_size = floatval($room_size);
@@ -189,102 +217,104 @@ class EditwebController{
                 if (preg_match( "/[0-9]{3}/", $room_number)) {
                     
                     if(empty($room_number)){
-                        $errors['room_number'] = 'Room number field required';
+                        $errorsNew['room_number'] = 'Room number field required';
                     }else{
                         if($floor_type == 0){
                             if($room_number > 0 && $room_number < 100){
+                                $room_number = "A".$room_number;
                                 $db = new RoomEdit;
                                 if ($db->serchRoom($room_number) == 1) {
-                                    $errors['room_number'] = 'Room number already exist';
+                                    $errorsNew['room_number'] = 'Room number already exist';
                                 }
                             }else{
-                                $errors['room_number'] = 'Ground Floor Contains 001 - 099';
+                                $errorsNew['room_number'] = 'Ground Floor Contains 001 - 099';
                             }
                         }
                         if($floor_type == 1){
+                            
                             if($room_number > 99 && $room_number < 200){
+                                $room_number = "B".$room_number;
                                 $db = new RoomEdit;
                                 if ($db->serchRoom($room_number) == 1) {
-                                    $errors['room_number'] = 'Room number already exist';
+                                    $errorsNew['room_number'] = 'Room number already exist';
                                 }
                             }else{
-                                $errors['room_number'] = 'First Floor Contains 100 - 199';
+                                $errorsNew['room_number'] = 'First Floor Contains 100 - 199';
                             }
                         }
                         if($floor_type == 2){
+                            
                             if($room_number > 199 && $room_number < 300){
+                                $room_number = "C".$room_number;
                                 $db = new RoomEdit;
                                 if ($db->serchRoom($room_number) == 1) {
-                                    $errors['room_number'] = 'Room number already exist';
+                                    $errorsNew['room_number'] = 'Room number already exist';
                                 }
                             }else{
-                                $errors['room_number'] = 'Second Floor Contains 200 - 299';
+                                $errorsNew['room_number'] = 'Second Floor Contains 200 - 299';
                             }
                         }
                         if($floor_type == 3){
+                           
                             if($room_number > 299 && $room_number < 400){
+                                $room_number = "D".$room_number;
                                 $db = new RoomEdit;
                                 if ($db->serchRoom($room_number) == 1) {
-                                    $errors['room_number'] = 'Room number already exist';
+                                    $errorsNew['room_number'] = 'Room number already exist';
                                 }
                             }else{
-                                $errors['room_number'] = 'Third Floor Contains 300 - 399';
+                                $errorsNew['room_number'] = 'Third Floor Contains 300 - 399';
                             }
                         }
                         if($floor_type == 4){
+                           
                             if($room_number > 399 && $room_number < 400){
+                                $room_number = "E".$room_number;
                                 $db = new RoomEdit;
                                 if ($db->serchRoom($room_number) == 1) {
-                                    $errors['room_number'] = 'Room number already exist';
+                                    $errorsNew['room_number'] = 'Room number already exist';
                                 }
                             }else{
-                                $errors['room_number'] = 'Forth Floor Contains 400 - 499';
+                                $errorsNew['room_number'] = 'Forth Floor Contains 400 - 499';
                             }
                         }
                     }
                 }else{
-                    $errors['room_number'] = 'Your Input Must Be 3 Digits';
+                    $errorsNew['room_number'] = 'Your Input Must Be 3 Digits';
                 }
 
                 if(empty($room_name)){
-                    $errors['room_name'] = 'Room name field required';
+                    $errorsNew['room_name'] = 'Room name field required';
                 }else{
                     if (!preg_match( "/^[A-Za-z.\s_-]+$/", $room_name)) {
-                        $errors['room_name'] = 'Invalid room name';  
+                        $errorsNew['room_name'] = 'Invalid room name';  
                     }
                 }
 
                 if(empty($room_desc)){
-                    $errors['room_desc'] = 'Room description field required';
+                    $errorsNew['room_desc'] = 'Room description field required';
                 }
                 
                 if(empty($price)){
-                    $errors['price'] = 'price Field required';
+                    $errorsNew['price'] = 'price Field required';
                 }else{
                     if(!preg_match("/^[0-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/" , $price)){
-                        $errors['price'] = 'Entered Price is Invalid';
+                        $errorsNew['price'] = 'Entered Price is Invalid';
                     }
                 }
                 
                 if(empty($room_size)){
-                    $errors['room_size'] = 'room size Field required';
+                    $errorsNew['room_size'] = 'room size Field required';
                 }else{
                     if(!preg_match("/^[0-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/" , $room_size)){
-                        $errors['room_size'] = 'Entered Room Size is Invalid';
+                        $errorsNew['room_size'] = 'Entered Room Size is Invalid';
                     }
                 }
 
-                if(empty($discount)){
-                    $errors['discount'] = 'room discount Field required';
-                }else{
-                    if(!preg_match("/^[0-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/" , $room_size)){
-                        $errors['discount'] = 'Entered Room Discount is Invalid';
-                    }
-                }
-
-                
+                // print_r($errorsNew);
+                //     exit(); 
             
-                if(count( $errors ) == 0) {
+                if(count( $errorsNew ) == 0) {
 
                     $file = $_FILES['imgfile'];
                     // print_r($file);
@@ -332,47 +362,47 @@ class EditwebController{
                                     $room_number = "E".$room_number;
                                 }
 
-                                $updateDetails = $db->createRoom( $room_number, $type_name, $room_name, $room_desc, $floor_type, $room_size, $price, $room_view,  $air_condition, $free_canseleration, $hot_water ,$breakfast_included , $discount, $start_date, $end_date);
-                    
+                                $updateDetails = $db->createRoom( $room_number, $type_name, $room_name, $room_desc, $floor_type, $room_size, $price, $room_view,  $air_condition, $free_canseleration, $hot_water ,$breakfast_included );
+                   
                                 $db = new Image();
                                 if ($db->upload($room_number, "image_01" ,  $path)){
                                     move_uploaded_file($filetmp_name, $path);
-                                    $data['errors'] = $errors;
+                                    $data['errors'] = $errorsNew;
                                     $db = new RoomEdit;
                                     $data['rooms'] = $db->getAllRoom();
                                     view::load('dashboard/editweb/index', $data);
         
                                 }else{
-                                    $errors['img'] = 'Image Not Uploaded';
-                                    $data['errors'] = $errors;
+                                    $errorsNew['img'] = 'Image Not Uploaded';
+                                    $data['errors'] = $errorsNew;
                                     $data['room'] = array("room_number"=>$room_number, "room_name"=>$room_name, "type_id"=>$type_name, "room_desc"=>$room_desc, "price"=>$price, "room_view"=>$room_view, "floor_type"=>$floor_type, "room_size"=>$room_size, "air_condition"=>$air_condition, "free_canseleration"=>$free_canseleration, "hot_water"=>$hot_water, "breakfast_included"=>$breakfast_included);
                                     unset($_POST);
                                     view::load('dashboard/editweb/newRoom', $data);
                                 }
                             }else{
-                                $errors['img'] = 'Image File Is Too Small';
-                                $data['errors'] = $errors;
+                                $errorsNew['img'] = 'Image File Is Too Small';
+                                $data['errors'] = $errorsNew;
                                 $data['room'] = array("room_number"=>$room_number, "room_name"=>$room_name, "type_id"=>$type_name, "room_desc"=>$room_desc, "price"=>$price, "room_view"=>$room_view, "floor_type"=>$floor_type, "room_size"=>$room_size, "air_condition"=>$air_condition, "free_canseleration"=>$free_canseleration, "hot_water"=>$hot_water, "breakfast_included"=>$breakfast_included);
                                 unset($_POST);
                                 view::load('dashboard/editweb/newRoom', $data);
                             }
                         }else{
-                            $errors['img'] = 'There Is Some Error In Image';
-                            $data['errors'] = $errors;
+                            $errorsNew['img'] = 'There Is Some Error In Image';
+                            $data['errors'] = $errorsNew;
                             $data['room'] = array("room_number"=>$room_number, "room_name"=>$room_name, "type_id"=>$type_name, "room_desc"=>$room_desc, "price"=>$price, "room_view"=>$room_view, "floor_type"=>$floor_type, "room_size"=>$room_size, "air_condition"=>$air_condition, "free_canseleration"=>$free_canseleration, "hot_water"=>$hot_water, "breakfast_included"=>$breakfast_included);
                             unset($_POST);
                             view::load('dashboard/editweb/newRoom', $data);
                         }
                     }else{
-                        $errors['img'] = 'Invalid Image Format';
-                        $data['errors'] = $errors;
+                        $errorsNew['img'] = 'Invalid Image Format';
+                        $data['errors'] = $errorsNew;
                         $data['room'] = array("room_number"=>$room_number, "room_name"=>$room_name, "type_id"=>$type_name, "room_desc"=>$room_desc, "price"=>$price, "room_view"=>$room_view, "floor_type"=>$floor_type, "room_size"=>$room_size, "air_condition"=>$air_condition, "free_canseleration"=>$free_canseleration, "hot_water"=>$hot_water, "breakfast_included"=>$breakfast_included);
                         unset($_POST);
                         view::load('dashboard/editweb/newRoom', $data);
                     }
                 }
                 else {
-                    $data['errors'] = $errors;
+                    $data['errors'] = $errorsNew;
                     $data['room'] = array("room_number"=>$room_number, "room_name"=>$room_name, "type_id"=>$type_name, "room_desc"=>$room_desc, "price"=>$price, "room_view"=>$room_view, "floor_type"=>$floor_type, "room_size"=>$room_size, "air_condition"=>$air_condition, "free_canseleration"=>$free_canseleration, "hot_water"=>$hot_water, "breakfast_included"=>$breakfast_included);
                     unset($_POST);
                     view::load('dashboard/editweb/newRoom', $data);
@@ -385,57 +415,124 @@ class EditwebController{
 
 
     public function update() {
-        
+        // var_dump($_POST);
+        // exit;
         if(isset($_POST['submit'])) {
                 $errors = array();
 
+                $room_id= $_POST['room_id'];
                 $room_number= $_POST['room_number'];
                 $room_name = $_POST['room_name'];
                 $type_name = $_POST['type_name'];
-                $room_desc = "SDfdsfsf";
+                $room_desc = $_POST['room-desc'];
                 $room_view = $_POST['room_view'];
                 $floor_type = $_POST['floor_type'];
+
                 $room_size = $_POST['room_size'];
-                $price = floatval($room_size);
+                $room_size = floatval($room_size);
+
                 $price = $_POST['price'];
                 $price = floatval($price);
+
                 $air_condition = $_POST['air_condition'];
+
                 $free_canseleration = $_POST['free_canseleration'];
+
                 $hot_water = $_POST['hot_water'];
+
                 $breakfast_included = $_POST['breakfast_included'];
 
-            // Checking max length
-            $max_len_fields = array('room_number' => 50, 'room_name' => 100, 'type_name' => 100, 'room_view' => 20, 'floor_type' => 2, 'room_size' => 10, 'price' => 5);
-            $errors = array_merge($errors, $this->check_max_len($max_len_fields));
-            // echo "Tharindu";
+                if (preg_match( "/^[0-9]{3}$/", $room_number)) {
+                    
+                    if(empty($room_number)){
+                        $errors['room_number'] = 'Room number field required';
+                    }else{
+                        if($floor_type == 0){
+                            if($room_number > 0 && $room_number < 100){
+                                $room_number = "A".$room_number;
+                               
+                            }else{
+                                $errors['room_number'] = 'Ground Floor Contains 001 - 099';
+                            }
+                        }
+                        if($floor_type == 1){
+                            if($room_number > 99 && $room_number < 200){
+                                $room_number = "B".$room_number;
+                                
+                            }else{
+                                $errors['room_number'] = 'First Floor Contains 100 - 199';
+                            }
+                        }
+                        if($floor_type == 2){
+                            if($room_number > 199 && $room_number < 300){
+                                $room_number = "C".$room_number;
+                               
+                            }else{
+                                $errors['room_number'] = 'Second Floor Contains 200 - 299';
+                            }
+                        }
+                        if($floor_type == 3){
+                            if($room_number > 299 && $room_number < 400){
+                                $room_number = "D".$room_number;
+                                
+                            }else{
+                                $errors['room_number'] = 'Third Floor Contains 300 - 399';
+                            }
+                        }
+                        if($floor_type == 4){
+                            if($room_number > 399 && $room_number < 400){
+                                $room_number = "E".$room_number;
+                                
+                            }else{
+                                $errors['room_number'] = 'Forth Floor Contains 400 - 499';
+                            }
+                        }
+                    }
+                }else{
+                    $errors['room_number'] = 'Your Input Must Be 3 Digits';
+                }
 
-            if($room_size == 0.00) {
-                // echo "Tharindu";
-                $errors['room_size'] = "Room Size is empty";
-            }
-            if($price == 0.00) {
-                $errors['price'] = "Room Price is empty";
-            }
+                if(empty($room_name)){
+                    $errors['room_name'] = 'Room name field required';
+                }else{
+                    if (!preg_match( "/^[A-Za-z.\s_-]+$/", $room_name)) {
+                        $errors['room_name'] = 'Invalid room name';  
+                    }
+                }
 
-            $errors = array_filter( $errors ); 
+                if(empty($room_desc)){
+                    $errors['room_desc'] = 'Room description field required';
+                }
+                
+                if(empty($price)){
+                    $errors['price'] = 'price Field required';
+                }else{
+                    if(!preg_match("/^[0-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/" , $price)){
+                        $errors['price'] = 'Entered Price is Invalid';
+                    }
+                }
+                
+                if(empty($room_size)){
+                    $errors['room_size'] = 'room size Field required';
+                }else{
+                    if(!preg_match("/^[0-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/" , $room_size)){
+                        $errors['room_size'] = 'Entered Room Size is Invalid';
+                    }
+                }
+
+ 
             
             if(count( $errors ) == 0) {
-                $db1 = new RoomDetails();
-                $room_datails = $db1->getOneRoomView($room_number);
-                // var_dump($room_datails);
-                $room_id = $room_datails[0]['room_id'];
-
-                $db = new RoomEdit;
-            
-                $updateDetails = $db->updateRoom($room_id, $room_number, $type_name, $room_name, $room_desc, $floor_type, $room_size, $price,  $air_condition, $free_canseleration, $hot_water);
+                
+               $db = new RoomEdit;
+            $updateDetails = $db->updateRoom($room_id, $room_number, $type_name, $room_name, $room_desc, $floor_type, $room_size, $price,  $air_condition, $free_canseleration, $hot_water);
 
 
                 if($updateDetails == 1){
 
-                    $data['room_details'] = $db1->getOneRoomView($room_number); 
-                    // $errors['email'] = 'Email address already use other';
-                    // $data['errors'] = $errors['email'];
+                    $data['room_details'][0] = array("room_id"=>$room_id, "room_number"=>$room_number, "room_name"=>$room_name, "type_id"=>$type_name, "room_desc"=>$room_desc, "price"=>$price, "room_view"=>$room_view, "floor_type"=>$floor_type, "room_size"=>$room_size, "air_condition"=>$air_condition, "free_canselaration"=>$free_canseleration, "hot_water"=>$hot_water, "breakfast_included"=>$breakfast_included);
                     $data['success'] = array("success"=> "Update Success"); 
+                    unset($_POST);
                     view::load("dashboard/editweb/changeDetails", $data);
                 }
                 else {
@@ -443,9 +540,10 @@ class EditwebController{
                 }
             }
             else {
-                $db1 = new RoomDetails();
-                $data['room_details'] = $db1->getOneRoomView($room_number); 
+               
                 $data['errors'] = $errors;
+                    $data['room_details'][0] = array("room_id"=>$room_id, "room_number"=>$room_number, "room_name"=>$room_name, "type_id"=>$type_name, "room_desc"=>$room_desc, "price"=>$price, "room_view"=>$room_view, "floor_type"=>$floor_type, "room_size"=>$room_size, "air_condition"=>$air_condition, "free_canselaration"=>$free_canseleration, "hot_water"=>$hot_water, "breakfast_included"=>$breakfast_included);
+                    unset($_POST);
                     view::load("dashboard/editweb/changeDetails", $data);
             }
 

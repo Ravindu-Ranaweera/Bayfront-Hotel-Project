@@ -70,7 +70,7 @@ form.sign-in-form {
   border-radius: 10px;
   display: grid;
   grid-template-columns: 15% 85%;
-  padding: 0 0.4rem;
+  padding: 0 5px;
   position: relative;
 }
 
@@ -79,7 +79,7 @@ form.sign-in-form {
   line-height: 55px;
   color: #acacac;
   transition: 0.5s;
-  font-size: 1.1rem;
+  font-size: 17px;
 }
 
 .input-field input {
@@ -88,7 +88,7 @@ form.sign-in-form {
   border: none;
   line-height: 1;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 17px;
   color: #333;
 }
 
@@ -101,7 +101,7 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  -webkit-background-color: transparent;
+  background-color: transparent;
   transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -111,8 +111,8 @@ select:-webkit-autofill:focus {
 }
 
 .social-text {
-  padding: 0.7rem 0;
-  font-size: 1rem;
+  padding: 11px 0;
+  font-size: 16px;
   text-decoration: none;
   color: #000;
 }
@@ -128,12 +128,12 @@ select:-webkit-autofill:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 0.45rem;
+  margin: 0 8px;
   color: #333;
   border-radius: 50%;
   border: 1px solid #333;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 17px;
   transition: 0.3s;
 }
 
@@ -206,12 +206,12 @@ select:-webkit-autofill:focus {
 
 .left-panel {
   pointer-events: all;
-  padding: 3rem 17% 2rem 12%;
+  padding: 3rem 17% 32px 12%;
 }
 
 .right-panel {
   pointer-events: none;
-  padding: 3rem 12% 2rem 17%;
+  padding: 3rem 12% 32px 17%;
 }
 
 .panel .content {
@@ -223,22 +223,22 @@ select:-webkit-autofill:focus {
 .panel h3 {
   font-weight: 600;
   line-height: 1;
-  font-size: 1.5rem;
+  font-size: 24px;
 }
 
 .panel p {
-  font-size: 0.95rem;
-  padding: 0.7rem 0;
+  font-size: 15px;
+  padding: 11px 0;
 }
 
 .btn.transparent {
-  margin: 0;
+  margin: 30px auto;
   background: none;
   border: 2px solid #fff;
   width: 130px;
   height: 41px;
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 12px;
 }
 
 .right-panel .image,
@@ -337,19 +337,19 @@ select:-webkit-autofill:focus {
   }
 
   .panel h3 {
-    font-size: 1.2rem;
+    font-size: 19px;
     margin-bottom: 20px;
   }
 
   .panel p {
-    font-size: 0.7rem;
-    padding: 0.5rem 0;
+    font-size: 11px;
+    padding: 8px 0;
   }
 
   .btn.transparent {
     width: 110px;
     height: 35px;
-    font-size: 0.7rem;
+    font-size: 11px;
   }
 
   .container:before {
@@ -392,7 +392,7 @@ select:-webkit-autofill:focus {
 
 @media (max-width: 570px) {
   form {
-    padding: 0 1.5rem;
+    padding: 0 24px;
   }
 
   .image {
@@ -400,11 +400,11 @@ select:-webkit-autofill:focus {
   }
 
   .panel .content {
-    padding: 0.5rem 1rem;
+    padding: 8px 16px;
   }
 
   .container {
-    padding: 1.5rem;
+    padding: 24px;
   }
 
   .container:before {
