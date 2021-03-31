@@ -94,6 +94,8 @@ class ReservationController {
                 $db = new Image();
                 $imageRoom =$db->viewRoom();
             // var_dump($imageRoom);
+                $db = new RoomEdit();
+                $data['discount_details'] = $db->getAllDiscount();
                 $data['img_details'] = $imageRoom;
                 $data['msg2'] = "Plaese login then Reserve Room";
                 View::load('room', $data);
@@ -176,6 +178,8 @@ class ReservationController {
 
             $db = new Image();
             $imageRoom =$db->viewRoom();
+            $db = new RoomEdit();
+            $data['discount_details'] = $db->getAllDiscount();
         // var_dump($imageRoom);
             $data['img_details'] = $imageRoom;
             $data['msg2'] = "Plaese login then Reserve Room";
@@ -193,7 +197,9 @@ class ReservationController {
             $dashboard->index();   
         }
         else {
-            
+            $db = new RoomDetails();
+            $rooms = $db->getRoomAll();
+            $data['rooms'] = $rooms;
             $data['reservation'] = array('room_number' => $room_number, 'max_guest' => $max_guest);
             view::load('dashboard/reservation/create', $data);
             
@@ -878,8 +884,7 @@ class ReservationController {
                             
                             if($result == 1) {
                                 $data['errors'] = $errors;
-                                echo "hello";
-                                die();
+                               
                                 view::load("dashboard/reservation/edit", $data);
                                 
                                 
@@ -890,10 +895,7 @@ class ReservationController {
                             $data['success'] = array("suceesmsg" => "data updated");
                             $result = $db->getUpdateReservation($reservation_id, $check_in_date, $check_out_date);
                             if($result == 1) {
-                                // $this->index();
-                                // echo "hello";
-                                // print_r($data);
-                                // die();
+                                
                                  view::load('dashboard/reservation/edit', $data);
                                 
                             }

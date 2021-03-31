@@ -1828,3 +1828,13 @@ input[type="file"] {
     background-color: rgb(116, 24, 24);
     border-radius: 4px;
 }
+.success-style {
+  font-weight: 100;
+    font-size: 18px;
+    line-height: 22.4px;
+    padding: 6px;
+    color: #fff;
+    /* font-weight: 300; */
+    background-color: rgb(22, 80, 22);
+    border-radius: 4px;
+}

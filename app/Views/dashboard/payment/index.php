@@ -45,6 +45,9 @@
                             <a href="<?php url("payment/option"); ?>" class="addnew"><i class="material-icons">reply_all</i></a>
                             <a href="<?php url("payment/allIndex"); ?>" class="refresh"><i class="material-icons">loop</i></a> 
                        </span> 
+                       <div class="notifyclass">
+                            <span class="notifyError" id="notificationReserveMsg"></span>
+                        </div>
                        </h4>
                        <p class="textfortabel">Cash Payments only can Edit By Owner</p>
                     <?php }if(!isset($pay_all) && !isset($pay_online)) { ?>
@@ -53,6 +56,7 @@
                             <a href="<?php url("payment/option"); ?>" class="addnew"><i class="material-icons">reply_all</i></a>
                             <a href="<?php url("payment/cashIndex"); ?>" class="refresh"><i class="material-icons">loop</i></a> 
                        </span> 
+                        
                        </h4>
                     <?php } ?>
                        
@@ -140,14 +144,14 @@
                                         ?>
                                         <!-- Check current Date -->
                                         <?php if($row['check_in_date'] < $current_date ) { ?>
-                                            <td><a href="#" onclick="return confirm('Can not Do Out of Date Edit Sorry!!?');" class="edit"><i class="material-icons">create</i></a></td>
+                                            <td><a href="#" onclick="canNotEditPayment()" class="edit"><i class="material-icons">create</i></a></td>
                                         <?php } else { $editView = 1; ?>
                                             <td><a href="<?php url('payment/detailsView/'.$row['reservation_id'].'/'.$row['customer_id'].'/'.$total_price.'/'.$row['price'].'/'.$row['room_name'].'/'.$pay_online.'/'.$pay_all.'/'.$editView);?>" class="edit"><i class="material-icons">create</i></a></td>
                                             <?php unset($editView); ?>
                                         <?php } ?>
                                         
                                         <?php }else { ?>
-                                            <td><a href="#" onclick="return confirm('Can not Do Online Edit Sorry!!?');" class="edit"><i class="material-icons">create</i></a></td>
+                                            <td><a href="#" onclick="canNotEditOnlinePayment()" class="edit"><i class="material-icons">create</i></a></td>
                                         <?php } ?>
                                     <?php endif; ?> 
 
@@ -171,5 +175,5 @@
 
 </div>   
    
-
+<script src="<?php echo BURL.'assets/js/main.js'; ?>"></script>
 <?php include(VIEWS.'dashboard/inc/footer.php'); ?>

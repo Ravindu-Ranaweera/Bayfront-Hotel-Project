@@ -99,7 +99,7 @@ td > h4 {
     margin-bottom: 10px;
     text-decoration: none;
     padding: 10px;
-    background: #dc3545;
+    background: #dc35456b;
     color: #fff;
     border-radius: 5px;
     border: none;
@@ -115,7 +115,7 @@ td > h4 {
     margin-bottom: 10px;
     text-decoration: none;
     padding: 10px;
-    background: #dc3545;
+    background: rgb(116, 24, 24);
     color: #fff;
     border-radius: 5px;
     border: none;
@@ -129,7 +129,7 @@ a.btn_seek_success {
     margin-bottom: 10px;
     text-decoration: none;
     padding: 10px;
-    background: #28a745;
+    background: rgb(22, 80, 22);
     color: #fff;
     border-radius: 5px;
     border: none;

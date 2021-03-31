@@ -160,7 +160,8 @@ class Reservation extends Connection {
         $query = "SELECT * FROM $this->reservation_table
                   WHERE reservation_id = '{$this->reservation_id}' AND $this->reservation_table.is_valid = 1
                   LIMIT 1";
-
+        // var_dump($query);
+        // die();
         $reservations = mysqli_query($this->connection, $query);
         if($reservations){
             if(mysqli_num_rows($reservations) == 1) {
@@ -170,6 +171,8 @@ class Reservation extends Connection {
         else {
             echo "Query Error";
         }
+        // var_dump($reservation);
+        // die();
 
         return $reservation;
 
