@@ -198,11 +198,13 @@ class RoomDetails extends RoomType {
                  (check_in_date <= '{$roomAvailableCheck->reservation_check_in_date}'  AND  check_out_date >= '{$roomAvailableCheck->reservation_check_in_date}')) OR
                  ((check_in_date = '{$current_date}' AND check_in_date <= '{$roomAvailableCheck->reservation_check_out_date}'  AND  check_out_date > '{$roomAvailableCheck->reservation_check_out_date}') OR 
                  (check_in_date <= '{$roomAvailableCheck->reservation_check_out_date}'  AND  check_out_date >= '{$roomAvailableCheck->reservation_check_out_date}')))
-                 ORDER BY $this->room_id";
+                 LIMIT 1";
 
 
         $result = mysqli_query($this->connection, $query);
         $value = 0;
+        // var_dump($query);
+        // die();
         if($result) {
             if(mysqli_num_rows($result) != 0) {
                 $value = 1;
@@ -258,23 +260,28 @@ class RoomDetails extends RoomType {
                     ON  $this->room_table.type_id = $this->room_type_table.room_type_id
                     LEFT OUTER JOIN $roomAvailableGet->reservation_table
                     ON  $this->room_table.room_id = $roomAvailableGet->reservation_table.room_id 
-                    WHERE $this->room_table.today_booked = 0 AND $this->room_table.type_id = '{$this->room_type_id}' AND $this->room_table.is_delete =0 AND
+                    WHERE $this->room_table.today_booked = 0 AND $this->room_table.price > 20000 AND $this->room_table.type_id = '{$this->room_type_id}' AND $this->room_table.is_delete =0 AND
                     ((($roomAvailableGet->reservation_table.check_in_date != '{$current_date}' AND $roomAvailableGet->reservation_table.check_in_date > '{$check_in_date}' AND $roomAvailableGet->reservation_table.check_in_date > '{$check_out_date}' AND $roomAvailableGet->reservation_table.is_valid = 1) OR
                     $roomAvailableGet->reservation_table.check_in_date IS NULL) OR 
                     (($roomAvailableGet->reservation_table.check_in_date != '{$current_date}' AND $roomAvailableGet->reservation_table.check_out_date < '{$check_in_date}' AND $roomAvailableGet->reservation_table.check_out_date < '{$check_out_date}' AND $roomAvailableGet->reservation_table.is_valid = 1) OR
                     $roomAvailableGet->reservation_table.check_out_date IS NULL))
-                    ORDER BY  room_details.room_id";
+                    ORDER BY  room_details.price DESC";
             
         
         $rooms= mysqli_query($this->connection, $query);
-        // var_dump($rooms);
+        // var_dump($query);
+        // die();
         // echo "<br>";
         if($rooms) {
+            // echo "success";
+            // die();
             if(mysqli_num_rows($rooms) != 0) {
                 mysqli_fetch_all($rooms,MYSQLI_ASSOC);
-                // $value = 1;
+                $value = 1;
                 // echo "have a data";
                 return $rooms;
+                // echo "success";
+                // die();
             }
             else {
                 $rooms = array();
@@ -282,8 +289,9 @@ class RoomDetails extends RoomType {
                 return $rooms;
             }
         }
-        else {
+        if(empty($rooms)) {
             echo "Database Query Failed getAvailableRooms";
+            // die();
         }
     }
 
