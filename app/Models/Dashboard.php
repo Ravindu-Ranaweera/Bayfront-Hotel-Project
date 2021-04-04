@@ -43,8 +43,11 @@ class Dashboard {
 
     public function getReservationCount() {
         
-
-        $query = "SELECT COUNT(reservation_id) as total FROM $this->table2 WHERE is_valid = 1";
+        date_default_timezone_set("Asia/Colombo");
+        $current_date = date('Y-m-d');
+        
+        $query = "SELECT COUNT(reservation_id) as total FROM $this->table2 WHERE is_valid = 1
+                AND check_in_date ='{$current_date}' || check_out_date ='{$current_date}'";
 
         $reservations = mysqli_query($this->connection, $query);
         if($reservations){
@@ -66,25 +69,23 @@ class Dashboard {
        date_default_timezone_set("Asia/Colombo");
        $current_date = date('Y-m-d');
 
-       $query = "SELECT SUM($this->table1.price) as total
+       $query = "SELECT $this->table1.price, $this->table2.check_in_date, $this->table2.check_out_date
                 FROM $this->table1
                 INNER JOIN $this->table2
                 ON $this->table1.room_id = $this->table2.room_id  
                 WHERE $this->table2.check_in_date = '{$current_date}' AND $this->table2.is_valid = 1";
 
-        $reservation_price = mysqli_query($this->connection, $query);
-
-        if($reservation_price){
-            if(mysqli_num_rows($reservation_price) == 1) {
-                $price = mysqli_fetch_assoc($reservation_price);
-                return $price;
-            }
+        $reservations = mysqli_query($this->connection, $query);
+        // var_dump($query);
+        // die();
+        if($reservations) {
+            mysqli_fetch_all($reservations,MYSQLI_ASSOC);
         }
         else {
-            echo "Query Error2";
-        }
+            echo "Database Query Failed";
+        } 
 
-        
+        return $reservations;
     }
 
     public function getEmployeeCount() {

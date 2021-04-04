@@ -5,7 +5,25 @@ class DashboardController {
 
     public function index() {
         
-        if(isset($_SESSION)) {
+        // if(isset($_SESSION)) {
+        //     $data = array();
+
+            // $db = new Dashboard();
+            // $dbreservation = new Reservation();
+
+            // $resultRoom = $db->getRoomCount();
+            // $resultReservation = $db->getReservationCount();
+            // $resultIncome = $db->getReservationIncome();
+            // $resultEmployee = $db->getEmployeeCount();
+            // $countReservation = $dbreservation->getCountReservation();
+
+            // $data['reservationCount'] = $countReservation;
+            // $data['details'] = array("rooms" => $resultRoom['total'], "reservations" => $resultReservation['total'], "income" => $resultIncome['total'], "employees" => $resultEmployee['total']);
+            // view::load('dashboard/dashboard', $data);
+        // }
+
+        // else {
+            // session_start();
             $data = array();
 
             $db = new Dashboard();
@@ -14,31 +32,23 @@ class DashboardController {
             $resultRoom = $db->getRoomCount();
             $resultReservation = $db->getReservationCount();
             $resultIncome = $db->getReservationIncome();
+            $total_price= 0;
+            $real_price= 0;
+            foreach($resultIncome as $row) {
+                $date1=date_create($row['check_in_date']);
+                $date2=date_create($row['check_out_date']);
+                $diff=date_diff($date1,$date2);
+                $days = $diff->format("%a");
+                $total_price = $days*$row['price'];
+                $real_price = $real_price + $total_price;
+            }
             $resultEmployee = $db->getEmployeeCount();
             $countReservation = $dbreservation->getCountReservation();
 
             $data['reservationCount'] = $countReservation;
-            $data['details'] = array("rooms" => $resultRoom['total'], "reservations" => $resultReservation['total'], "income" => $resultIncome['total'], "employees" => $resultEmployee['total']);
+            $data['details'] = array("rooms" => $resultRoom['total'], "reservations" => $resultReservation['total'], "income" => $real_price, "employees" => $resultEmployee['total']);
             view::load('dashboard/dashboard', $data);
-        }
-
-        else {
-            session_start();
-            $data = array();
-
-            $db = new Dashboard();
-            $dbreservation = new Reservation();
-
-            $resultRoom = $db->getRoomCount();
-            $resultReservation = $db->getReservationCount();
-            $resultIncome = $db->getReservationIncome();
-            $resultEmployee = $db->getEmployeeCount();
-            $countReservation = $dbreservation->getCountReservation();
-
-            $data['reservationCount'] = $countReservation;
-            $data['details'] = array("rooms" => $resultRoom['total'], "reservations" => $resultReservation['total'], "income" => $resultIncome['total'], "employees" => $resultEmployee['total']);
-            view::load('dashboard/dashboard', $data);
-        }
+        // }
         
         // view::load('dashboard/dashboard');
            

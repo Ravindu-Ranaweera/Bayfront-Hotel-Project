@@ -672,7 +672,7 @@ class RoomController {
             
         }
         else {
-            $datails['msg3'] = "No Rooms Available";
+            $datails['msg'] = "No Rooms Available";
             // echo "No Rooms Available";
         }
         return $datails;

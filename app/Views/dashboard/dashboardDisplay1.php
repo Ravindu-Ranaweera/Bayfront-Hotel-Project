@@ -54,7 +54,7 @@
                                     <?php 
                                     $income = (int)$details['income'];
                                     echo $income; ?> 
-                                <small class="special">Lkr</small>
+                                <small class="special">LKR</small>
                                 </h3>
                             </div>
                             <div class="card-footer1">
